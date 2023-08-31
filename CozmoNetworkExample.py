@@ -51,7 +51,9 @@ def cozmo_program(robot: cozmo.robot.Robot):
     
     while cont:
         bytedata = s.recv(4048)
+        #NOTE: casting bytedata as a string just returns "b'string'" which was not the goal!  
         #data = str(bytedata)
+        #we need to decode the byte data to get the contents of the message
         data = bytedata.decode('utf-8')
         if not data:
             cont = False
